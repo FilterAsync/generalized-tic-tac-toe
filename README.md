@@ -1,5 +1,9 @@
 # Generalized Tic Tac Toe
 
+<div style="text-align:center">
+    <image src="https://cdn.discordapp.com/attachments/934079852674437130/1111268315218841671/Screenshot_2023-05-25_150715_256x256.png">
+</div>
+
 A generalized version of traditional Tic Tac Toe: play Tic Tac Toe with arbitrary board size and number of marks to win. Given $n$ and $m$, one can play $n \times n$ board with $m$ number of marks to win. A player wins when placing $m$ pieces of his choice in a consecutive order. The game may end in a draw if no one wins.
 
 
