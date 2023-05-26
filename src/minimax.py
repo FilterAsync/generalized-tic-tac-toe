@@ -1,7 +1,6 @@
 # TODO: optimize further minimax
 
 from board import Board, State
-from copy import deepcopy
 from math import inf
 
 
@@ -40,7 +39,7 @@ class Minimax:
         best_move = -1
 
         for the_move in board.available_moves:
-            temp_board = deepcopy(board)
+            temp_board = board.deepcopy()
             temp_board.move(the_move)
 
             score = cls.minimax(temp_board, player, depth, alpha, beta)
@@ -63,7 +62,7 @@ class Minimax:
         best_move = -1
 
         for the_move in board.available_moves:
-            temp_board = deepcopy(board)
+            temp_board = board.deepcopy()
             temp_board.move(the_move)
 
             score = cls.minimax(temp_board, player, depth, alpha, beta)

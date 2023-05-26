@@ -195,3 +195,15 @@ class Board:
             return True
 
         return False
+
+    def deepcopy(self):
+        new_board = Board(self.board_width, self.num_marks_to_win)
+
+        new_board.board = [row.copy() for row in self.board]
+        new_board.player_turn = self._player_turn
+        new_board.winner = self._winner
+        new_board.available_moves = self.available_moves.copy()
+        new_board.game_over = self._game_over
+        new_board.moves_count = self.moves_count
+
+        return new_board
