@@ -56,7 +56,7 @@ class TicTacToe:
                 row * square_size + self.offset,
             ),
             self.offset // 2,
-            LINE_WIDTH,
+            CIRC_RADIUS - self.game_board.board_width // 2,
         )
 
     def draw_marker_x(self, row: int, col: int) -> None:
@@ -68,7 +68,7 @@ class TicTacToe:
             CROSS_COLOR,
             (col * square_size + offset, row * square_size + offset),
             (col * square_size + offset * 3, row * square_size + offset * 3),
-            LINE_WIDTH,
+            CROSS_WIDTH,
         )
 
         pygame.draw.line(
@@ -76,7 +76,7 @@ class TicTacToe:
             CROSS_COLOR,
             (col * square_size + offset, row * square_size + offset * 3),
             (col * square_size + offset * 3, row * square_size + offset),
-            LINE_WIDTH,
+            CROSS_WIDTH,
         )
 
     def draw_markers(self) -> None:
