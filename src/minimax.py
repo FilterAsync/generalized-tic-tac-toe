@@ -11,7 +11,14 @@ class Minimax:
             raise ValueError("Maximum depth must be greater than 0.")
 
         cls.max_depth = max_depth
-        cls.minimax(board, player, 0, -inf, inf)
+
+        if len(board.available_moves) == board.num_elements:
+            if board.board_width % 2 == 1:
+                board.move(board.num_elements // 2)
+            else:
+                board.move(board.num_elements // 2 - board.board_width // 2 - 1)
+        else:
+            cls.minimax(board, player, 0, -inf, inf)
 
     @classmethod
     def minimax(
