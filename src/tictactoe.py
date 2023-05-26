@@ -170,4 +170,4 @@ class TicTacToe:
 
             pygame.display.flip()
 
-            self.clock.tick(48)
+            self.clock.tick(FPS_LIMIT)
