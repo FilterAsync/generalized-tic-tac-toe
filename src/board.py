@@ -54,6 +54,8 @@ class Board:
     def reset(self) -> None:
         self.moves_count = 0
         self.available_moves = set(range(self.num_elements))
+        self.game_over = True
+        self.player_turn = State.X if self.winner == State.X else State.O
         self.winner = State.Blank
         self.game_over = False
         self.board = [
