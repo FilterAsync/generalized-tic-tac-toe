@@ -1,9 +1,10 @@
 from board import Board
 from tictactoe import TicTacToe
+from typing import List
 import sys
 
 
-def main(args: list[str]) -> None:
+def main(args: List[str]) -> None:
     board_width = -1
     num_marks_to_win = -1
 

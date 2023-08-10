@@ -1,5 +1,5 @@
 from enum import Enum
-
+from typing import Tuple
 
 class State(Enum):
     Blank = ""
@@ -15,7 +15,7 @@ class Board:
 
         self.num_marks_to_win = num_marks_to_win
         self.board_width = board_width
-        self.num_elements = board_width * board_width
+        self.num_elements = board_width ** 2
 
         self.moves_count = 0
         self.available_moves = set(range(self.num_elements))
@@ -66,7 +66,7 @@ class Board:
     def board_position_to_index(self, row: int, col: int) -> int:
         return row * self.board_width + col
 
-    def index_to_board_position(self, index: int) -> tuple[int, int]:
+    def index_to_board_position(self, index: int) -> Tuple[int, int]:
         row = index // self.board_width
         col = index % self.board_width
 
@@ -190,13 +190,10 @@ class Board:
             row_right_up -= 1
             col_right_up += 1
 
-        if (
+        return (
             count_diagonal_left >= self.num_marks_to_win
             or count_diagonal_right >= self.num_marks_to_win
-        ):
-            return True
-
-        return False
+        )
 
     def deepcopy(self):
         new_board = Board(self.board_width, self.num_marks_to_win)
