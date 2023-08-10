@@ -2,6 +2,8 @@ from algorithms import Algorithms
 from board import Board, State
 from constants import *
 from pygame.event import Event
+from itertools import product
+from typing import Tuple
 import pygame, sys
 
 
@@ -82,13 +84,12 @@ class TicTacToe:
     def draw_markers(self) -> None:
         board_width = self.game_board.board_width
 
-        for row in range(board_width):
-            for col in range(board_width):
-                if self.game_board.board[row][col] == State.O:
-                    self.draw_marker_o(row, col)
+        for row, col in product(range(board_width), range(board_width)):
+            if self.game_board.board[row][col] == State.O:
+                self.draw_marker_o(row, col)
 
-                if self.game_board.board[row][col] == State.X:
-                    self.draw_marker_x(row, col)
+            if self.game_board.board[row][col] == State.X:
+                self.draw_marker_x(row, col)
 
     def draw_winner(self) -> None:
         winner = self.game_board.winner
@@ -102,7 +103,7 @@ class TicTacToe:
 
         self.screen.blit(text, text_rect)
 
-    def mouse_position_to_index(self, position: tuple[int, int]) -> int:
+    def mouse_position_to_index(self, position: Tuple[int, int]) -> int:
         square_size = self.square_size
 
         col = position[0] // square_size
@@ -133,7 +134,7 @@ class TicTacToe:
                 self.ai = 1
                 self.game_board.reset()
 
-    def handle_player_move(self, mouse_position: tuple[int, int]) -> None:
+    def handle_player_move(self, mouse_position: Tuple[int, int]) -> None:
         index = self.mouse_position_to_index(mouse_position)
 
         if index in range(self.game_board.num_elements):
